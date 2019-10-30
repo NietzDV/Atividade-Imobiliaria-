@@ -9,12 +9,16 @@ package imobili;
  *
  * @author Aluno
  */
-public class Residencial {
+public class Residencial extends Imovel {
     private int numeroQuarto;
 
-    public Residencial(int numeroQuarto) {
+    public Residencial( int codigo, String regiao, double valor, boolean disponivel, int numeroQuarto) {
+        super(codigo, regiao, valor, disponivel);
         this.numeroQuarto = numeroQuarto;
-    }  
+    }
+
+  
+   
 
     public int getNumeroQuarto() {
         return numeroQuarto;
@@ -26,7 +30,12 @@ public class Residencial {
 
     @Override
     public String toString() {
-        return "Residencial{" + "numeroQuarto=" + numeroQuarto + '}';
+        return "Residencial = {" +
+                "numeroQuartos: " + numeroQuarto + 
+                ", código: " + super.getCodigo() + 
+                ", valor: " + super.getValor() + 
+                ", regiao: " + super.getRegiao() + 
+                ", disponivel: " + super.isDisponivel() + '}';
     }
     
 }

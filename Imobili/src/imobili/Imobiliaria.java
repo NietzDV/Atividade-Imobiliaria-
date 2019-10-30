@@ -14,17 +14,19 @@ import java.util.Scanner;
  */
 public class Imobiliaria {
     
-    private ArrayList <Imovel> imoveis;
+    private ArrayList <Imovel> imoveis = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
     private int op = 1;
+    
     public void menu(){
        
-        System.out.println("----------Menu Imobiliária----------");
-        System.out.println("1 - Cadastrar Imóvel\n2 - Alugar Imóvel\n3 - Sair");
-        System.out.println("------------------------------------");
         do{
-            op = sc.nextInt();
+            System.out.println("----------Menu Imobiliária----------");
+            System.out.println("1 - Cadastrar Imóvel\n2 - Alugar Imóvel\n3 - Sair");
+            System.out.println("------------------------------------");
+            System.out.print(">");
             
+            op = sc.nextInt();
             switch(op){
                 case 1:
                     //cadastrar imovel
@@ -32,6 +34,7 @@ public class Imobiliaria {
                     break;
                 case 2:
                     //alugar imovel
+                    listaImoveis();
                     break;
                 case 3:
                     System.out.println("Obriago e volte sempre!");
@@ -40,37 +43,65 @@ public class Imobiliaria {
                     System.out.println("Opção invalida");
                     break;
             }
-        }while(op != 0);
+        }while(op != 3);
     }
     
     private boolean listaImoveis(){
-       return true; // mudar
+        //Parte que tem que estudar
+      if(imoveis.isEmpty()){
+            System.out.println("Sem imóveis cadastrados");
+            return false;
+        }else{
+            for(Imovel i: imoveis){
+                System.out.println(i.toString());
+            }
+            return true;
+        }
     }
     
     private void alugarImovel(int codigo){
-        
+      //ultima parte faltando
     }
+    
+    
     
     private void cadastrarImoveis(){
  
+        double valor;
+        String regiao;
+        int cod;
+
         System.out.println("----------Cadastrar Imóvel----------");
         System.out.println("1 - Residencial\n2 - Comercial");
         System.out.println("------------------------------------");
-        do{
+       
+            
+            System.out.print(">");
             op = sc.nextInt();
+            System.out.print("Codigo >");
+            cod = sc.nextInt();
+            System.out.print("Valor >");
+            valor = sc.nextDouble();
+            System.out.print("Regiao >");
+            regiao = sc.next();
             
             switch(op){
                 case 1:
                     //Residencial
+                    System.out.print("Quantidade de quartos > ");
+                    imoveis.add(new Residencial(cod, regiao, valor, true, sc.nextInt()));
                     break;
                 case 2:
                     //Comercial
+                    System.out.print("Área util do imóvel >");
+                    imoveis.add(new Comercial(cod, regiao, valor, true, sc.nextDouble()));
+
                     break;                
                 default:
                     System.out.println("Opção invalida");
                     break;
             }
-        }while(op != 0);
+        
     }
     
 }

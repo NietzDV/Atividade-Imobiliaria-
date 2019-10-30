@@ -54,10 +54,5 @@ private boolean disponivel;
         this.disponivel = disponivel;
     }
 
-    @Override
-    public String toString() {
-        return "Imovel{" + "codigo=" + codigo + ", regiao=" + regiao + ", valor=" + valor + ", disponivel=" + disponivel + '}';
-    }
-
 
 }
